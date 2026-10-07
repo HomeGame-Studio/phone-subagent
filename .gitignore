@@ -1,0 +1,5 @@
+ledger.db*
+spool/
+locks/
+__pycache__/
+*.pyc

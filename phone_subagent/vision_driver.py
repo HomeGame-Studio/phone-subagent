@@ -39,11 +39,12 @@ Rules:
 
 def drive(goal: str, see: Callable[[], bytes], act: Callable[[dict], None],
           vision: Callable[[str, bytes], str], max_steps: int = 120,
-          on_step=None) -> dict:
+          on_step=None, device=None, flow=None) -> dict:
     """Run the vision loop. Returns {'ok': bool, 'summary': str, 'steps': int}.
 
     vision(prompt, png_bytes) -> model text (must contain the action JSON).
-    on_step(step, action, screenshot) lets callers audit every decision.
+    on_step(step, action, screenshot) lets callers audit every decision —
+    pass store.make_sink(device, flow) to persist the visual memory.
     """
     history = []
     for step in range(max_steps):

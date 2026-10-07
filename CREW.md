@@ -39,3 +39,10 @@ Scripted taps broke every time a screen moved, rotated, updated, or showed
 an unexpected dialog. A model that looks before every action pays a little
 latency and gets correctness for free: landscape phones, moved buttons,
 surprise popups, error dialogs — all just pictures it reads.
+
+**When to add scripts back:** only when the UI has been stable for months
+AND throughput hurts. Even then, scripts are helpers called from inside the
+vision loop — the goal, the verification, and every recovery decision stay
+vision-driven. If screens mutate weekly (they do here), pure vision wins on
+total cost: every UI break costs hours of script debugging that the vision
+loop just reads past.

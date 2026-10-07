@@ -92,6 +92,20 @@ from phone_subagent.vision_driver import drive
 result = drive(goal, see=screencap_via_adb, act=run_via_adb, vision=my_model)
 ```
 
+### Why it's accurate (it's not pixel perfection)
+
+Vision models misread small text and tap 50px off all the time. The accuracy comes from the **closed loop**: the model looks *after* every action, so a misread self-corrects on the next screenshot. A script that taps wrong never knows it tapped wrong.
+
+### When to use scripts instead
+
+| Environment | Right call |
+|---|---|
+| UI mutates weekly | **Pure vision** — robustness beats speed; script maintenance costs more than latency |
+| UI stable for months | Hybrid — scripted fast path, vision tripwire on any surprise |
+| Unknown | Start pure vision, measure, add scripts for the stable 90% only if throughput hurts |
+
+The driver supports both: nothing stops a crew from calling a deterministic helper *inside* the loop — but the goal, the verification, and every recovery decision stay vision-driven.
+
 ## License
 
 MIT

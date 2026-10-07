@@ -63,6 +63,7 @@ python3 bin/report.py --slot <path> --ok 1 --line "dev-A: CREATED"
 | `phone_subagent/lock.py` | Per-device flock (context manager or CLI) |
 | `phone_subagent/reaper.py` | Crash recovery + `reconcile()` for unknown outcomes |
 | `phone_subagent/vision_driver.py` | Zero-determinism driver: a multimodal model decides every action from the current screenshot |
+| `phone_subagent/store.py` | Centralized screenshot + decision store (NAS-ready via `SCREEN_STORE`) |
 | `bin/dispatcher.py` | CLI: init, register devices, add inputs, dispatch |
 | `bin/take.py` / `bin/report.py` / `bin/lock.py` | Crew CLIs |
 | `CREW.md` | The standing-worker brief your AI crews follow |
@@ -105,6 +106,25 @@ Vision models misread small text and tap 50px off all the time. The accuracy com
 | Unknown | Start pure vision, measure, add scripts for the stable 90% only if throughput hurts |
 
 The driver supports both: nothing stops a crew from calling a deterministic helper *inside* the loop — but the goal, the verification, and every recovery decision stay vision-driven.
+
+## Visual memory (centralized screenshots)
+
+Every vision-loop step saves its screenshot and the model's decision to a shared store:
+
+```
+{SCREEN_STORE}/{device}/{YYYY-MM-DD}/{flow}-{step:03d}.png
+                                             {flow}-{step:03d}.json   # action, args, thought, ts
+```
+
+Point `SCREEN_STORE` at any filesystem-shaped target — a local dir or a NAS mount. Wire it via the driver's `on_step`:
+
+```python
+from phone_subagent import store
+result = drive(goal, see, act, vision, on_step=store.make_sink(device, flow))
+store.recent(device)     # a phone's last decisions — for slot injection / crew context
+```
+
+This is the fleet's shared visual memory: "what did this phone's screen look like when it failed" is a file lookup, and vision prompts can few-shot from real screens. Prune with `python3 -m phone_subagent.store --prune-days 14`.
 
 ## License
 

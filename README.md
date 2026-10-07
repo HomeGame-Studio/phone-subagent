@@ -62,6 +62,7 @@ python3 bin/report.py --slot <path> --ok 1 --line "dev-A: CREATED"
 | `phone_subagent/claim.py` | Crew-side slot take (atomic rename) + result logging |
 | `phone_subagent/lock.py` | Per-device flock (context manager or CLI) |
 | `phone_subagent/reaper.py` | Crash recovery + `reconcile()` for unknown outcomes |
+| `phone_subagent/vision_driver.py` | Zero-determinism driver: a multimodal model decides every action from the current screenshot |
 | `bin/dispatcher.py` | CLI: init, register devices, add inputs, dispatch |
 | `bin/take.py` / `bin/report.py` / `bin/lock.py` | Crew CLIs |
 | `CREW.md` | The standing-worker brief your AI crews follow |
@@ -75,6 +76,21 @@ python3 bin/report.py --slot <path> --ok 1 --line "dev-A: CREATED"
 **Why `outcome_unknown` instead of auto-release?** If a worker dies mid-task, the remote system may already have consumed the input. Silently returning it to the pool double-spends; parking it for reconciliation spends a moment of judgment instead. `reaper.reconcile(input_id, spent=True/False)` closes the loop.
 
 **Why one device per crew?** Determinism and auditability: every action in a device's log comes from one driver, contention is impossible by construction, and "screenshot first" debugging actually works.
+
+## Zero-determinism driving
+
+"By hand" here means **a multimodal model decides every action from the current screenshot** — no fixed coordinates, no UI-tree parsing, no memorized step sequences. `phone_subagent/vision_driver.py` implements the loop:
+
+```
+screenshot → model(goal + history + what it sees) → ONE action → repeat
+```
+
+The model's entire action space is `tap / type / key / swipe / wait / done / stuck`. Procedures become goals ("create an account, pfp set, city set, proofs captured"), not scripts. Landscape phones, moved buttons, surprise dialogs — all just pictures it reads.
+
+```python
+from phone_subagent.vision_driver import drive
+result = drive(goal, see=screencap_via_adb, act=run_via_adb, vision=my_model)
+```
 
 ## License
 

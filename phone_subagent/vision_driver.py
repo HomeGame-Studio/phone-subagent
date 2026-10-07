@@ -39,15 +39,20 @@ Rules:
 
 def drive(goal: str, see: Callable[[], bytes], act: Callable[[dict], None],
           vision: Callable[[str, bytes], str], max_steps: int = 120,
-          on_step=None, device=None, flow=None) -> dict:
+          on_step=None, device=None, flow=None, max_seconds=None) -> dict:
     """Run the vision loop. Returns {'ok': bool, 'summary': str, 'steps': int}.
 
     vision(prompt, png_bytes) -> model text (must contain the action JSON).
     on_step(step, action, screenshot) lets callers audit every decision —
     pass store.make_sink(device, flow) to persist the visual memory.
+    max_seconds is a wall-clock budget (monotonic clock) alongside
+    max_steps — a session should never be only step-bounded.
     """
+    deadline = time.monotonic() + max_seconds if max_seconds else None
     history = []
     for step in range(max_steps):
+        if deadline is not None and time.monotonic() > deadline:
+            return {'ok': False, 'summary': 'max seconds reached', 'steps': step}
         shot = see()
         prompt = PROMPT.format(goal=goal, history=' | '.join(history[-12:]) or 'none',
                               actions=json.dumps({k: str(v) for k, v in ACTION_SCHEMA.items()}))

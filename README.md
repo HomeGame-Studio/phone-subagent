@@ -32,7 +32,7 @@ Three rules keep it honest:
 
 1. The **dispatcher** (plain Python, no AI) picks an idle device and claims one unit of consumable input — device, input, and slot published together in a single SQLite transaction
 2. A **crew** atomically takes the slot (rename = claim), locks the device, drives it end-to-end through the vision loop, and reports one audit line
-3. The **reaper** recovers crashes: stuck slots go to the repair queue, ambiguous reservations go to `outcome_unknown` — never silently back to available
+3. The **reaper** recovers crashes with a split by slot state: **claimed**-past-TTL (a crew died holding it) parks the device in repair and the input in `outcome_unknown`; **queued**-past-TTL (starvation — the slot never ran) releases the device to idle and the input to `available`. Backlog is not a device fault. Orphan spool files move to `.trash/` — never re-consumed
 
 ## Quick start
 
@@ -45,15 +45,25 @@ python3 -m phone_subagent.ledger init                    # create the ledger
 python3 bin/dispatcher.py devices dev-A dev-B dev-C       # register devices
 printf '{"user":"u1","pass":"p1"}\n' > inputs.jsonl       # one consumable per line
 python3 bin/dispatcher.py inputs --kind creds inputs.jsonl
-python3 bin/dispatcher.py dispatch --count 3 --procedure procedures/signup.md
+# consuming flow: each slot burns one 'creds' input (kind-matched — a slot
+# can never grab an input of another kind)
+python3 bin/dispatcher.py dispatch --count 3 --procedure procedures/signup.md --input-kind creds
+# inputless flow (e.g. warming): omit --input-kind entirely
+python3 bin/dispatcher.py dispatch --count 3 --procedure procedures/warm.md
 ```
 
 Then run a crew — an AI agent session pointed at [`CREW.md`](CREW.md), or a plain script using the same helpers:
 
 ```bash
 python3 bin/take.py --crew crew-1       # -> slot path + JSON, or EMPTY
+                                      # (a claim is conditional: queued AND
+                                      #  not expired — a lost claim is never driven)
 python3 bin/lock.py --device dev-A -- <any command touching the device>
-python3 bin/report.py --slot <path> --ok 1 --line "dev-A: CREATED"
+python3 bin/report.py --slot <path> --outcome done --line "dev-A: CREATED"
+# failure with a strike (two strikes park the device in repair):
+python3 bin/report.py --slot <path> --outcome failed --strike-class infra-adb --line "dev-A: adb gone"
+# cancellation / busy device: releases without striking
+python3 bin/report.py --slot <path> --outcome skipped --line "dev-A: SKIP: lock busy"
 ```
 
 ## Zero-determinism driving
@@ -69,7 +79,8 @@ The model's entire action space is `tap / type / key / swipe / wait / done / stu
 ```python
 from phone_subagent.vision_driver import drive
 
-result = drive(goal, see=screencap, act=run_input, vision=my_model)
+result = drive(goal, see=screencap, act=run_input, vision=my_model,
+              max_steps=200, max_seconds=15*60)   # wall-clock budget too
 ```
 
 ### Why it's accurate (it's not pixel perfection)
@@ -115,16 +126,18 @@ available → reserved(job) → spent
                     ↘ outcome_unknown   (ambiguous crash — reconcile decides)
 ```
 
-`reaper.reconcile(input_id, spent=True)` closes the loop on unknowns; `reaper.reap()` returns stuck slots and stale reservations to the right queues. Every slot gets a one-line result, so the `results` table is the complete audit trail.
+`reaper.reconcile(input_id, spent=True)` closes the loop on unknowns; `reaper.reap()` splits expiry by slot state (claimed → repair + `outcome_unknown`; queued → idle + `available`) and trashes orphan spool files. Every slot gets a one-line result, so the `results` table is the complete audit trail.
+
+**Outcomes and strikes.** `finish(slot, crew, outcome, line, strike=...)` settles a slot exactly once: `done` spends the input and resets strikes, `failed` parks the input in `outcome_unknown` (optionally recording one strike — class-tagged, applied atomically with the terminal transition), `skipped` releases without striking. Strikes are event rows (`ledger.reverse_strikes` reverses a class/window — a farm-wide outage must not park healthy devices as repairs), and repair is only ever cleared by reconcile/reversal, never by finish.
 
 ## Layout
 
 | Path | What it does |
 |---|---|
-| `phone_subagent/ledger.py` | SQLite schema + transactional claim/release/finish |
-| `phone_subagent/claim.py` | Crew-side slot take (atomic rename) + result logging |
-| `phone_subagent/lock.py` | Per-device flock (context manager or CLI) |
-| `phone_subagent/reaper.py` | Crash recovery + `reconcile()` for unknown outcomes |
+| `phone_subagent/ledger.py` | SQLite schema + transactional claim/dispatch/finish + strike rows |
+| `phone_subagent/claim.py` | Crew-side conditional slot take (rename + ledger confirm) |
+| `phone_subagent/lock.py` | Per-device flock (context manager or CLI; O_CLOEXEC, configurable dir) |
+| `phone_subagent/reaper.py` | Crash recovery (claimed/queued split + spool reconciliation) + `reconcile()` |
 | `phone_subagent/vision_driver.py` | Zero-determinism driver: the look-decide-act loop |
 | `phone_subagent/store.py` | Centralized screenshot + decision store (NAS-ready) |
 | `bin/dispatcher.py` | CLI: init, register devices, add inputs, dispatch |

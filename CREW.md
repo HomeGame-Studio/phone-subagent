@@ -20,8 +20,11 @@ a multimodal model decides each tap from what it sees right now.
    - The model sees: current screenshot + goal + what it already did.
    - It answers ONE action: `tap`, `type`, `key`, `swipe`, `wait`, `done`, `stuck`.
    - There is nothing else. The goal (from the slot) is the only instruction.
-4. **Report one line**: `python3 bin/report.py --slot <path> --ok 1 --line
-   "<device>: <result.summary>"`.
+4. **Report one line**: `python3 bin/report.py --slot <path> --outcome done
+   --line "<device>: <result.summary>"`. On a device-attributable failure,
+   add `--strike-class infra-adb` (or walk-failed / deadline); two strikes
+   park the device in repair. On contention or a stale claim, report
+   `--outcome skipped` — release without striking.
 5. On failure, `--strike <device>`; two strikes parks it in repair.
 
 ## Rules

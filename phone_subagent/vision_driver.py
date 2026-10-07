@@ -60,18 +60,30 @@ def drive(goal: str, see: Callable[[], bytes], act: Callable[[dict], None],
             history.append(f'step {step}: unparseable model reply')
             time.sleep(2); continue
         action = decision.get('action')
+        args = decision.get('args', {})
+        if not isinstance(args, dict):
+            # model sometimes returns a repr/json string for args — best-effort parse
+            try:
+                import ast
+                parsed = json.loads(args) if isinstance(args, str) else None
+                if not isinstance(parsed, dict):
+                    parsed = ast.literal_eval(args)
+                args = parsed if isinstance(parsed, dict) else {}
+            except Exception:
+                args = {}
+        decision['args'] = args
         if on_step: on_step(step, decision, shot)
         if action == 'done':
-            return {'ok': True, 'summary': decision.get('args', {}).get('summary', ''),
+            return {'ok': True, 'summary': args.get('summary', ''),
                     'steps': step + 1}
         if action == 'stuck':
-            return {'ok': False, 'summary': decision.get('args', {}).get('summary', 'stuck'),
+            return {'ok': False, 'summary': args.get('summary', 'stuck'),
                     'steps': step + 1}
         if action in ACTION_SCHEMA:
-            act({'action': action, **decision.get('args', {})})
+            act({'action': action, **args})
             history.append(decision.get('thought', action))
             if action == 'wait':
-                time.sleep(decision.get('args', {}).get('seconds', 2))
+                time.sleep(args.get('seconds', 2))
         else:
             history.append(f'step {step}: unknown action {action}')
     return {'ok': False, 'summary': 'max steps reached', 'steps': max_steps}

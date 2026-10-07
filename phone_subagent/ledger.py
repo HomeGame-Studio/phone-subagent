@@ -118,10 +118,11 @@ def finish_slot(slot_path, crew, ok, line, path=None):
                     ('done' if ok else 'failed', crew, now(), s['id']))
         if ok:
             con.execute("UPDATE inputs SET state='spent' WHERE id=?", (s['input_id'],))
+            # success clears the strike count; failure keeps it so two-strike can fire
+            con.execute("UPDATE devices SET state='idle', strikes=0 WHERE id=? AND state='busy'", (s['device'],))
         else:
-            # ambiguous: the remote may or may not have consumed it — reconcile decides
             con.execute("UPDATE inputs SET state='outcome_unknown' WHERE id=?", (s['input_id'],))
-        con.execute("UPDATE devices SET state='idle', strikes=0 WHERE id=? AND state='busy'", (s['device'],))
+            con.execute("UPDATE devices SET state='idle' WHERE id=? AND state='busy'", (s['device'],))
         con.execute("INSERT OR REPLACE INTO results (slot_id, device, ok, line, ts) VALUES (?,?,?,?,?)",
                     (s['id'], s['device'], 1 if ok else 0, line, now()))
         con.commit()

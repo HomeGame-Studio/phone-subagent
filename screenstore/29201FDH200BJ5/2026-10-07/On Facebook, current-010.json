@@ -1,0 +1,14 @@
+{
+ "device": "29201FDH200BJ5",
+ "flow": "On Facebook, current",
+ "step": 10,
+ "ts": "2026-10-07T23:53:20Z",
+ "action": "swipe",
+ "args": {
+  "x1": 539,
+  "y1": 1260,
+  "x2": 539,
+  "y2": 1800
+ },
+ "thought": "I will dismiss the filter sheet by swiping it downward."
+}

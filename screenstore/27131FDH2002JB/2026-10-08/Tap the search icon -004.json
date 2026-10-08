@@ -1,0 +1,11 @@
+{
+ "device": "27131FDH2002JB",
+ "flow": "Tap the search icon ",
+ "step": 4,
+ "ts": "2026-10-08T00:49:59Z",
+ "action": "wait",
+ "args": {
+  "seconds": 2
+ },
+ "thought": "Facebook is still loading on the visible splash screen, so I will wait briefly."
+}

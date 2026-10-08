@@ -1,0 +1,11 @@
+{
+ "device": "2C021FDH200AD3",
+ "flow": "You are driving an A",
+ "step": 21,
+ "ts": "2026-10-07T23:04:10Z",
+ "action": "key",
+ "args": {
+  "code": "BACKSPACE"
+ },
+ "thought": "The year 2026 is visibly selected, so I will clear it before entering 1960."
+}

@@ -1,0 +1,9 @@
+{
+ "device": "27131FDH2002JB",
+ "flow": "Find a LOCAL Charlot",
+ "step": 0,
+ "ts": "2026-10-08T00:49:08Z",
+ "action": "swipe",
+ "args": {},
+ "thought": "The visible content is a Texas voting information card and suggested stories, so I will scroll to the next screen."
+}

@@ -34,8 +34,8 @@ CREATE TABLE IF NOT EXISTS devices (
 CREATE TABLE IF NOT EXISTS inputs (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   kind TEXT NOT NULL,
-  payload TEXT NOT NULL,                  -- JSON blob (credentials etc.)
-  state TEXT NOT NULL DEFAULT 'available' -- available|reserved|spent|outcome_unknown
+    payload TEXT NOT NULL,                  -- JSON blob (credentials etc.)
+  state TEXT NOT NULL DEFAULT 'available' -- available|reserved|spent|outcome_unknown|contaminated
 );
 CREATE TABLE IF NOT EXISTS slots (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -289,3 +289,27 @@ def reverse_strikes(device_id, cls=None, since=None, path=None):
         return len(rows)
     finally:
         con.close()
+
+def contaminate(input_id, reason, path=None):
+    """Worker-discovered bad input (dupe in the wild, code suppression).
+    Terminal state — never returns to available."""
+    con = connect(path)
+    with con:
+        con.execute("UPDATE inputs SET state='contaminated' WHERE id=? AND state IN ('available','outcome_unknown')",
+                    (input_id,))
+
+def sweep_contaminated(values, path=None):
+    """Pre-issue sweep: bulk-contaminate available inputs whose payload
+    references any of the given values (e.g. every email the ledger ever
+    used + the dupe-event list). Returns how many were moved."""
+    con = connect(path)
+    moved = 0
+    with con:
+        for row in con.execute("SELECT id, payload FROM inputs WHERE state='available'"):
+            try: blob = json.dumps(json.loads(row['payload']))
+            except Exception: continue
+            if any(str(v) in blob for v in values):
+                con.execute("UPDATE inputs SET state='contaminated' WHERE id=?", (row['id'],))
+                moved += 1
+    con.close()
+    return moved

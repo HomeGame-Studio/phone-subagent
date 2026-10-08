@@ -1,0 +1,11 @@
+{
+ "device": "27131FDH2002JB",
+ "flow": "Find a LOCAL Charlot",
+ "step": 3,
+ "ts": "2026-10-08T00:49:20Z",
+ "action": "done",
+ "args": {
+  "summary": "NO-LOCAL-CONTENT"
+ },
+ "thought": "After four screens, only non-local reels and suggested content are visible."
+}

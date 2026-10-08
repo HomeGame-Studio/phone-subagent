@@ -1,0 +1,12 @@
+{
+ "device": "2C021FDH200AD3",
+ "flow": "SEGMENT A of a fresh",
+ "step": 4,
+ "ts": "2026-10-07T22:40:25Z",
+ "action": "tap",
+ "args": {
+  "x": 782,
+  "y": 571
+ },
+ "thought": "The Last name field is visible and empty, so I will focus it."
+}

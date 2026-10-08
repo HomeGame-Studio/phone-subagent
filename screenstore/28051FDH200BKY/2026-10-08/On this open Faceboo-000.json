@@ -1,0 +1,12 @@
+{
+ "device": "28051FDH200BKY",
+ "flow": "On this open Faceboo",
+ "step": 0,
+ "ts": "2026-10-08T00:19:47Z",
+ "action": "tap",
+ "args": {
+  "x": 594,
+  "y": 2264
+ },
+ "thought": "The visible 'Write a public comment...' field is at the bottom of the post."
+}

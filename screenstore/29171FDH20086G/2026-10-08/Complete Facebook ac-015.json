@@ -1,0 +1,9 @@
+{
+ "device": "29171FDH20086G",
+ "flow": "Complete Facebook ac",
+ "step": 15,
+ "ts": "2026-10-08T00:55:31Z",
+ "action": "tap",
+ "args": {},
+ "thought": "The visible Create new account button starts the signup flow."
+}

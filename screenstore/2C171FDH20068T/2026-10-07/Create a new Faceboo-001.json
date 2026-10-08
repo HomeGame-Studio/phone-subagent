@@ -1,0 +1,11 @@
+{
+ "device": "2C171FDH20068T",
+ "flow": "Create a new Faceboo",
+ "step": 1,
+ "ts": "2026-10-07T23:14:08Z",
+ "action": "wait",
+ "args": {
+  "seconds": 2
+ },
+ "thought": "The login screen is still loading and no Create new account control is visible yet."
+}

@@ -1,0 +1,14 @@
+{
+ "device": "27131FDH2002JB",
+ "flow": "Goal: get the Facebo",
+ "step": 18,
+ "ts": "2026-10-08T00:54:02Z",
+ "action": "swipe",
+ "args": {
+  "x1": 532,
+  "y1": 1844,
+  "x2": 532,
+  "y2": 702
+ },
+ "thought": "The page is followed, but the posts are below the visible details, so I will scroll down to the most recent post."
+}

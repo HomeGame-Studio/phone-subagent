@@ -1,0 +1,12 @@
+{
+ "device": "29201FDH200BJ5",
+ "flow": "On Facebook: tap the",
+ "step": 4,
+ "ts": "2026-10-07T23:50:48Z",
+ "action": "tap",
+ "args": {
+  "x": 895,
+  "y": 191
+ },
+ "thought": "The magnifying-glass search icon is visible at the top right."
+}

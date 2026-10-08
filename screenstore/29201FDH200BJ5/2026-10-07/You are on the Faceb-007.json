@@ -1,0 +1,14 @@
+{
+ "device": "29201FDH200BJ5",
+ "flow": "You are on the Faceb",
+ "step": 7,
+ "ts": "2026-10-07T23:48:40Z",
+ "action": "swipe",
+ "args": {
+  "x1": 535,
+  "y1": 1700,
+  "x2": 535,
+  "y2": 500
+ },
+ "thought": "The visible Gus Fink and Only Fins posts are not identifiable as Charlotte local sources, so I will scroll to the next feed screen."
+}

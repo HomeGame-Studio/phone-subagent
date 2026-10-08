@@ -1,0 +1,12 @@
+{
+ "device": "27131FDH2002JB",
+ "flow": "Tap the search icon ",
+ "step": 5,
+ "ts": "2026-10-08T00:50:04Z",
+ "action": "tap",
+ "args": {
+  "x": 895,
+  "y": 193
+ },
+ "thought": "The Facebook search icon is visible at the top right."
+}

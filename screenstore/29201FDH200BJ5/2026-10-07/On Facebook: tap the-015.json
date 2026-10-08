@@ -1,0 +1,12 @@
+{
+ "device": "29201FDH200BJ5",
+ "flow": "On Facebook: tap the",
+ "step": 15,
+ "ts": "2026-10-07T23:51:28Z",
+ "action": "tap",
+ "args": {
+  "x": 1032,
+  "y": 2230
+ },
+ "thought": "I am tapping outside the notification overlay to reveal Facebook's header."
+}

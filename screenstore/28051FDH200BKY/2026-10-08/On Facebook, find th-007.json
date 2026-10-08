@@ -1,0 +1,12 @@
+{
+ "device": "28051FDH200BKY",
+ "flow": "On Facebook, find th",
+ "step": 7,
+ "ts": "2026-10-08T00:18:37Z",
+ "action": "tap",
+ "args": {
+  "x": 55,
+  "y": 226
+ },
+ "thought": "I can see the reel overlay with a back arrow, so I am returning to the search results."
+}

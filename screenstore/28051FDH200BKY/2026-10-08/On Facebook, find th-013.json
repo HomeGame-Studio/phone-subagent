@@ -1,0 +1,14 @@
+{
+ "device": "28051FDH200BKY",
+ "flow": "On Facebook, find th",
+ "step": 13,
+ "ts": "2026-10-08T00:19:05Z",
+ "action": "swipe",
+ "args": {
+  "x1": 529,
+  "y1": 2134,
+  "x2": 528,
+  "y2": 785
+ },
+ "thought": "The visible Jacksonville NC post is unrelated, so I am scrolling further to find the target post or Page."
+}

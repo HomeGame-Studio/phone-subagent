@@ -1,0 +1,11 @@
+{
+ "device": "28051FDH200BKY",
+ "flow": "On this Facebook pos",
+ "step": 18,
+ "ts": "2026-10-07T23:42:27Z",
+ "action": "stuck",
+ "args": {
+  "summary": "Google says it couldn\u2019t verify the account, and Facebook is inaccessible."
+ },
+ "thought": "The verification failure screen provides no path back to the Facebook post."
+}

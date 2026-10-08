@@ -1,0 +1,12 @@
+{
+ "device": "28051FDH200BKY",
+ "flow": "On Facebook, find th",
+ "step": 17,
+ "ts": "2026-10-08T00:19:25Z",
+ "action": "tap",
+ "args": {
+  "x": 446,
+  "y": 1497
+ },
+ "thought": "The target post asking which place to never return to is visible, so I am opening it."
+}

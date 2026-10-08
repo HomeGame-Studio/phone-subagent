@@ -1,0 +1,11 @@
+{
+ "device": "27131FDH2002JB",
+ "flow": "The Facebook search ",
+ "step": 7,
+ "ts": "2026-10-08T00:51:47Z",
+ "action": "done",
+ "args": {
+  "summary": "Search results are displayed for \u201cCharlotte NC local news.\u201d Visible results include groups: \u201cCharlotte, North Carolina\u201d (2.1K members), \u201cCharlotte, NC - advertising, announcments, news, friends and \u2026\u201d (2.2K members), and \u201cCharlotte North Carolina, Buy Sell Trade, news, events, opinions\u201d (258 members). A post by \u201cCharlotte Alerts\u201d is also partially visible. No page follower counts are shown."
+ },
+ "thought": "The search results screen is visible with matching groups and a post, confirming the search was submitted."
+}

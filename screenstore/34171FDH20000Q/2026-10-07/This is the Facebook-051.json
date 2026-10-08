@@ -1,0 +1,12 @@
+{
+ "device": "34171FDH20000Q",
+ "flow": "This is the Facebook",
+ "step": 51,
+ "ts": "2026-10-07T23:00:38Z",
+ "action": "tap",
+ "args": {
+  "x": "197",
+  "y": "133"
+ },
+ "thought": "The visible Edit details screen has no Current City row, so I am tapping the back arrow."
+}

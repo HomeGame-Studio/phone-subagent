@@ -1,0 +1,14 @@
+{
+ "device": "27131FDH2002JB",
+ "flow": "You are on the Faceb",
+ "step": 1,
+ "ts": "2026-10-08T00:55:40Z",
+ "action": "swipe",
+ "args": {
+  "x1": 535,
+  "y1": 2100,
+  "x2": 535,
+  "y2": 1650
+ },
+ "thought": "The post text is visible but its lower details and counts are cut off, so I will scroll down slowly."
+}

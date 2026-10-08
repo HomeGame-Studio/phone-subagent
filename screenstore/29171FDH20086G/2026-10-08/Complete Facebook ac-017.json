@@ -1,0 +1,12 @@
+{
+ "device": "29171FDH20086G",
+ "flow": "Complete Facebook ac",
+ "step": 17,
+ "ts": "2026-10-08T00:55:36Z",
+ "action": "tap",
+ "args": {
+  "x": 354,
+  "y": 572
+ },
+ "thought": "The signup form visibly shows the First name field, so I will select it."
+}

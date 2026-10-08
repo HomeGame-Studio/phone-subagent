@@ -1,0 +1,12 @@
+{
+ "device": "28051FDH200BKY",
+ "flow": "On Facebook, find th",
+ "step": 0,
+ "ts": "2026-10-08T00:18:11Z",
+ "action": "tap",
+ "args": {
+  "x": 893,
+  "y": 194
+ },
+ "thought": "The Facebook search magnifying-glass icon is visible in the top bar."
+}

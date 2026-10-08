@@ -1,0 +1,11 @@
+{
+ "device": "28051FDH200BKY",
+ "flow": "On Facebook, find th",
+ "step": 19,
+ "ts": "2026-10-08T00:19:34Z",
+ "action": "done",
+ "args": {
+  "summary": "The full target post text is visible on the Jacksonville NC page."
+ },
+ "thought": "The post asking which place you will never go back to is fully readable."
+}

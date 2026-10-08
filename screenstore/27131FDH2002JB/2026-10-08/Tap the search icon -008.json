@@ -1,0 +1,11 @@
+{
+ "device": "27131FDH2002JB",
+ "flow": "Tap the search icon ",
+ "step": 8,
+ "ts": "2026-10-08T00:50:13Z",
+ "action": "key",
+ "args": {
+  "code": "ENTER"
+ },
+ "thought": "The query is entered and the keyboard is visible, so pressing Enter should submit the search."
+}

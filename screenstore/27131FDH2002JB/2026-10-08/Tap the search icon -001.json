@@ -1,0 +1,12 @@
+{
+ "device": "27131FDH2002JB",
+ "flow": "Tap the search icon ",
+ "step": 1,
+ "ts": "2026-10-08T00:49:50Z",
+ "action": "tap",
+ "args": {
+  "x": 894,
+  "y": 191
+ },
+ "thought": "The Facebook header is visible and the magnifying-glass search icon is at the top right."
+}

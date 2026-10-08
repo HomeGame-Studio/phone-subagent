@@ -1,0 +1,11 @@
+{
+ "device": "27131FDH2002JB",
+ "flow": "Tap the search icon ",
+ "step": 6,
+ "ts": "2026-10-08T00:50:07Z",
+ "action": "type",
+ "args": {
+  "text": "Charlotte NC local news"
+ },
+ "thought": "The visible Meta AI search field is focused and ready for text input."
+}

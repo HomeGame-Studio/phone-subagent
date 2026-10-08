@@ -1,0 +1,12 @@
+{
+ "device": "27131FDH2002JB",
+ "flow": "Goal: get the Facebo",
+ "step": 0,
+ "ts": "2026-10-08T00:52:53Z",
+ "action": "tap",
+ "args": {
+  "x": 1024,
+  "y": 232
+ },
+ "thought": "I can close the visible Reels overlay using the X in its header."
+}

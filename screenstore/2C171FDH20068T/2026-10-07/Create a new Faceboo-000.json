@@ -1,0 +1,12 @@
+{
+ "device": "2C171FDH20068T",
+ "flow": "Create a new Faceboo",
+ "step": 0,
+ "ts": "2026-10-07T23:14:05Z",
+ "action": "tap",
+ "args": {
+  "x": 539,
+  "y": 2138
+ },
+ "thought": "The Facebook login screen visibly shows the Create new account button."
+}

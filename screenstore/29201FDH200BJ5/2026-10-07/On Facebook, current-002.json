@@ -1,0 +1,12 @@
+{
+ "device": "29201FDH200BJ5",
+ "flow": "On Facebook, current",
+ "step": 2,
+ "ts": "2026-10-07T23:52:53Z",
+ "action": "tap",
+ "args": {
+  "x": 999,
+  "y": 2170
+ },
+ "thought": "The search query is entered, and the keyboard search button is visible at the bottom right."
+}

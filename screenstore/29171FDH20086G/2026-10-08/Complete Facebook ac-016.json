@@ -1,0 +1,12 @@
+{
+ "device": "29171FDH20086G",
+ "flow": "Complete Facebook ac",
+ "step": 16,
+ "ts": "2026-10-08T00:55:33Z",
+ "action": "tap",
+ "args": {
+  "x": 536,
+  "y": 1132
+ },
+ "thought": "The Join Facebook screen shows the visible Create new account button."
+}

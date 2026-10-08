@@ -1,0 +1,12 @@
+{
+ "device": "28051FDH200BKY",
+ "flow": "On this Facebook pos",
+ "step": 11,
+ "ts": "2026-10-07T23:42:10Z",
+ "action": "tap",
+ "args": {
+  "x": 2210,
+  "y": 949
+ },
+ "thought": "The visible Next button is the available way forward on the verification screen."
+}

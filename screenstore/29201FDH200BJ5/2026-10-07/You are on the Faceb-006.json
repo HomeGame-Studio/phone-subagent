@@ -1,0 +1,14 @@
+{
+ "device": "29201FDH200BJ5",
+ "flow": "You are on the Faceb",
+ "step": 6,
+ "ts": "2026-10-07T23:48:37Z",
+ "action": "swipe",
+ "args": {
+  "x1": 537,
+  "y1": 1671,
+  "x2": 536,
+  "y2": 508
+ },
+ "thought": "The visible Donnie Gray personal post is nonlocal, so I will scroll to the next feed screen."
+}

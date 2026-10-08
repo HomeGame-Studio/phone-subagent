@@ -1,0 +1,14 @@
+{
+ "device": "29171FDH20086G",
+ "flow": "Complete Facebook ac",
+ "step": 2,
+ "ts": "2026-10-08T00:54:30Z",
+ "action": "swipe",
+ "args": {
+  "x1": 540,
+  "y1": 1900,
+  "x2": 540,
+  "y2": 900
+ },
+ "thought": "The login form is visible and the signup option is below the current view, so I will scroll down."
+}

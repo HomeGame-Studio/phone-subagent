@@ -1,0 +1,12 @@
+{
+ "device": "27131FDH2002JB",
+ "flow": "Goal: get the Facebo",
+ "step": 8,
+ "ts": "2026-10-08T00:53:27Z",
+ "action": "tap",
+ "args": {
+  "x": 895,
+  "y": 192
+ },
+ "thought": "The Facebook home feed is visible with the search icon at the top."
+}

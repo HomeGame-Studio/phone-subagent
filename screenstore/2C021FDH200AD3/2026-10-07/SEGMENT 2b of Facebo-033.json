@@ -1,0 +1,14 @@
+{
+ "device": "2C021FDH200AD3",
+ "flow": "SEGMENT 2b of Facebo",
+ "step": 33,
+ "ts": "2026-10-07T22:12:19Z",
+ "action": "swipe",
+ "args": {
+  "x1": 740,
+  "y1": 1200,
+  "x2": 740,
+  "y2": 1600
+ },
+ "thought": "The year spinner is centered on 2019, so I will drag it downward to older years."
+}

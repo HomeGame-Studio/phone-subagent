@@ -1,0 +1,14 @@
+{
+ "device": "29201FDH200BJ5",
+ "flow": "On Facebook, current",
+ "step": 13,
+ "ts": "2026-10-07T23:53:32Z",
+ "action": "swipe",
+ "args": {
+  "x1": 541,
+  "y1": 1255,
+  "x2": 541,
+  "y2": 1870
+ },
+ "thought": "The filter sheet is open with only post filters visible, so I will dismiss it."
+}

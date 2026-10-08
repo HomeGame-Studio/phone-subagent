@@ -1,0 +1,11 @@
+{
+ "device": "2C021FDH200AD3",
+ "flow": "GMAIL LOGIN part 1",
+ "step": 9,
+ "ts": "2026-10-07T22:45:36Z",
+ "action": "key",
+ "args": {
+  "code": "CTRL+A"
+ },
+ "thought": "The email field is focused and contains an incorrect address, so I will select all text before replacing it."
+}

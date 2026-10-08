@@ -1,0 +1,14 @@
+{
+ "device": "29171FDH20086G",
+ "flow": "Complete Facebook ac",
+ "step": 66,
+ "ts": "2026-10-08T00:48:42Z",
+ "action": "swipe",
+ "args": {
+  "x1": 740,
+  "y1": 1050,
+  "x2": 740,
+  "y2": 1500
+ },
+ "thought": "The date dialog is open with the year wheel centered on 2026, so I will swipe downward to decrease the year."
+}

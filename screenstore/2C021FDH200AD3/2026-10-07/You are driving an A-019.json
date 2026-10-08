@@ -1,0 +1,12 @@
+{
+ "device": "2C021FDH200AD3",
+ "flow": "You are driving an A",
+ "step": 19,
+ "ts": "2026-10-07T23:04:04Z",
+ "action": "tap",
+ "args": {
+  "x": 740,
+  "y": 852
+ },
+ "thought": "The year field visibly shows 2026, so I will select it to replace it with 1960."
+}

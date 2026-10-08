@@ -1,0 +1,11 @@
+{
+ "device": "29171FDH20086G",
+ "flow": "Complete Facebook ac",
+ "step": 78,
+ "ts": "2026-10-08T00:49:25Z",
+ "action": "key",
+ "args": {
+  "code": "BACKSPACE"
+ },
+ "thought": "The year field is focused and visibly contains a partial value, so I will clear the last digit."
+}

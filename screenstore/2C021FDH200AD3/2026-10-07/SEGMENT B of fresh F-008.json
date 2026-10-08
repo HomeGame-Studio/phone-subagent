@@ -1,0 +1,11 @@
+{
+ "device": "2C021FDH200AD3",
+ "flow": "SEGMENT B of fresh F",
+ "step": 8,
+ "ts": "2026-10-07T22:42:10Z",
+ "action": "type",
+ "args": {
+  "text": "lizziedztownecyu169@gmail.com"
+ },
+ "thought": "The email field is focused and empty, so I will enter the required address exactly."
+}

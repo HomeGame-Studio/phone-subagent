@@ -1,0 +1,14 @@
+{
+ "device": "29171FDH20086G",
+ "flow": "Complete Facebook ac",
+ "step": 79,
+ "ts": "2026-10-08T00:49:28Z",
+ "action": "swipe",
+ "args": {
+  "x1": 530,
+  "y1": 850,
+  "x2": 530,
+  "y2": 1100
+ },
+ "thought": "The date dialog visibly has October 8, 1952 selected, so I will swipe the month wheel downward once toward September."
+}

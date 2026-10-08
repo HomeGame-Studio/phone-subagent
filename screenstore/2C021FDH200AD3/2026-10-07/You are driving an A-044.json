@@ -1,0 +1,11 @@
+{
+ "device": "2C021FDH200AD3",
+ "flow": "You are driving an A",
+ "step": 44,
+ "ts": "2026-10-07T23:05:17Z",
+ "action": "type",
+ "args": {
+  "text": "ogurehonito46@gmail.com"
+ },
+ "thought": "The focused Email field is empty, so I will enter the exact required address."
+}

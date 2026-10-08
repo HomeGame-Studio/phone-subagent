@@ -1,0 +1,12 @@
+{
+ "device": "34171FDH20000Q",
+ "flow": "This is the Facebook",
+ "step": 37,
+ "ts": "2026-10-07T23:00:02Z",
+ "action": "tap",
+ "args": {
+  "x": 365,
+  "y": 195
+ },
+ "thought": "The Current City row is visible directly below the Edit profile header, so I am tapping it."
+}

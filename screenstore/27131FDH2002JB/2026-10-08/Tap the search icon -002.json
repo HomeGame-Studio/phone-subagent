@@ -1,0 +1,14 @@
+{
+ "device": "27131FDH2002JB",
+ "flow": "Tap the search icon ",
+ "step": 2,
+ "ts": "2026-10-08T00:49:54Z",
+ "action": "swipe",
+ "args": {
+  "x1": 540,
+  "y1": 2200,
+  "x2": 540,
+  "y2": 900
+ },
+ "thought": "The Facebook app is not visible, so I will open the app drawer to find it."
+}

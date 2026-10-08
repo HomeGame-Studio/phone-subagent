@@ -1,0 +1,12 @@
+{
+ "device": "29201FDH200BJ5",
+ "flow": "On Facebook, current",
+ "step": 14,
+ "ts": "2026-10-07T23:53:37Z",
+ "action": "tap",
+ "args": {
+  "x": 1017,
+  "y": 195
+ },
+ "thought": "I will open the visible search filter controls to look for page results."
+}

@@ -1,0 +1,11 @@
+{
+ "device": "2C021FDH200AD3",
+ "flow": "You are driving an A",
+ "step": 23,
+ "ts": "2026-10-07T23:04:15Z",
+ "action": "type",
+ "args": {
+  "text": "1960"
+ },
+ "thought": "The year field is visibly selected, so I will replace it with 1960."
+}

@@ -1,0 +1,12 @@
+{
+ "device": "28051FDH200BKY",
+ "flow": "You are driving Face",
+ "step": 20,
+ "ts": "2026-10-07T23:41:10Z",
+ "action": "tap",
+ "args": {
+  "x": 74,
+  "y": 2334
+ },
+ "thought": "The notification settings sheet is partially visible at the bottom, with a downward chevron to close it."
+}

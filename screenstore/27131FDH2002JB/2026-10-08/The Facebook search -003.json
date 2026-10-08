@@ -1,0 +1,12 @@
+{
+ "device": "27131FDH2002JB",
+ "flow": "The Facebook search ",
+ "step": 3,
+ "ts": "2026-10-08T00:51:35Z",
+ "action": "tap",
+ "args": {
+  "x": 894,
+  "y": 192
+ },
+ "thought": "The Facebook home screen shows the search icon at the top, so I will open search."
+}

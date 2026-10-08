@@ -5,8 +5,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from phone_subagent import claim
 p = argparse.ArgumentParser()
 p.add_argument('--crew', required=True)
+p.add_argument('--spool', default=None,
+               help='spool dir (default: phone-subagent/spool)')
 a = p.parse_args()
-slot, data = claim.take(a.crew)
+slot, data = claim.take(a.crew, spool=a.spool)
 if slot is None:
     print('EMPTY')
 else:

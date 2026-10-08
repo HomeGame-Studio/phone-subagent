@@ -278,11 +278,10 @@ def reverse_strikes(device_id, cls=None, since=None, path=None):
         _recount_strikes(con, device_id, 10**9)   # re-derive; never parks here
         left = con.execute('SELECT COUNT(*) c FROM strikes WHERE device=? AND reversed=0',
                            (device_id,)).fetchone()['c']
-        if not rows and left == 0:
-            # nothing to reverse and no live strikes: leave repair alone
-            # unless it was parked purely by the strikes we just reversed
-            pass
-        if rows and left == 0:
+        # a device parked by the now-reversed strikes un-parks as soon as
+        # the derived count drops below the park threshold (2) — residual
+        # single strikes do not keep a device in repair
+        if rows and left < 2:
             con.execute("UPDATE devices SET state='idle' WHERE id=? AND state='repair'",
                        (device_id,))
         con.commit()

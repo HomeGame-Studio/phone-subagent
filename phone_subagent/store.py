@@ -23,12 +23,20 @@ from pathlib import Path
 DEFAULT_ROOT = Path(os.environ.get('SCREEN_STORE',
                         str(Path(__file__).resolve().parents[1] / 'screenstore')))
 
+LOCAL_FALLBACK_ROOT = Path('/home/adbserver/farm/screenstore-local')
+
 def make_sink(device, flow, root=None):
     """Return an on_step(step, decision, screenshot_bytes) for vision_driver.drive."""
     root = Path(root or DEFAULT_ROOT)
     day = time.strftime('%Y-%m-%d')
     out = root / device / day
-    out.mkdir(parents=True, exist_ok=True)
+    try:
+        out.mkdir(parents=True, exist_ok=True)
+    except OSError:
+        # dead NAS / soft-cifs mount ("Host is down"): never block the drive
+        # loop — keep the audit trail in a local fallback root instead.
+        out = LOCAL_FALLBACK_ROOT / device / day
+        out.mkdir(parents=True, exist_ok=True)
     def sink(step, decision, shot: bytes):
         base = out / f'{flow}-{step:03d}'
         try:

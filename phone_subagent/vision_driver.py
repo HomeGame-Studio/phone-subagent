@@ -15,6 +15,7 @@ from typing import Callable
 ACTION_SCHEMA = {
     'tap':    {'x': int, 'y': int},
     'swipe':  {'x1': int, 'y1': int, 'x2': int, 'y2': int},
+    'fling':  {'x1': int, 'y1': int, 'x2': int, 'y2': int},  # fast swipe: use for scroll wheels/spinners
     'type':   {'text': str},
     'key':    {'code': str},      # back / home / enter ...
     'wait':   {'seconds': int},

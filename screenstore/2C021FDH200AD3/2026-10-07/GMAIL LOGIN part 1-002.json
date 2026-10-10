@@ -1,9 +1,0 @@
-{
- "device": "2C021FDH200AD3",
- "flow": "GMAIL LOGIN part 1",
- "step": 2,
- "ts": "2026-10-07T22:45:14Z",
- "action": "tap",
- "args": {},
- "thought": "The email is entered correctly and the visible Next button is ready."
-}

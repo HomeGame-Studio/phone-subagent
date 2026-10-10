@@ -1,9 +1,0 @@
-{
- "device": "28051FDH200BKY",
- "flow": "On this Facebook pos",
- "step": 8,
- "ts": "2026-10-07T23:42:00Z",
- "action": "tap",
- "args": {},
- "thought": "The Google verification screen is blocking Facebook, and the visible Next button is the available way forward."
-}

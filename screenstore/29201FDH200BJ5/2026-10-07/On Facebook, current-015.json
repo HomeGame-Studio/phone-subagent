@@ -1,9 +1,0 @@
-{
- "device": "29201FDH200BJ5",
- "flow": "On Facebook, current",
- "step": 15,
- "ts": "2026-10-07T23:53:40Z",
- "action": "swipe",
- "args": {},
- "thought": "The open filter sheet only contains post filters, so I will dismiss it to access the search results."
-}

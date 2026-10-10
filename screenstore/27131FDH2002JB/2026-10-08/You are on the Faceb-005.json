@@ -1,9 +1,0 @@
-{
- "device": "27131FDH2002JB",
- "flow": "You are on the Faceb",
- "step": 5,
- "ts": "2026-10-08T00:55:50Z",
- "action": "tap",
- "args": {},
- "thought": "The back arrow is visible and should return from the Meta AI search overlay to the Charlotte Alerts page."
-}

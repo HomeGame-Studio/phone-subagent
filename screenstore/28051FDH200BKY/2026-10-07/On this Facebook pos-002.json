@@ -1,9 +1,0 @@
-{
- "device": "28051FDH200BKY",
- "flow": "On this Facebook pos",
- "step": 2,
- "ts": "2026-10-07T23:41:40Z",
- "action": "tap",
- "args": {},
- "thought": "The Google Play error dialog blocks the screen, and the visible OK button is the only way forward."
-}
